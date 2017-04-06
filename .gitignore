@@ -1,8 +1,7 @@
 *
 !.gitignore
-!alter_booking
+!wordpress/wp-content/themes/alter_booking
 !gulp-tasks
 !.eslintrc
 !gulpfile.js
 !package.json
-!*/
