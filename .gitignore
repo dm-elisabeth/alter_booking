@@ -1,4 +1,8 @@
-.DS_Store
-design
-node_modules
-wp-config.php
+*
+!.gitignore
+!alter_booking
+!gulp-tasks
+!.eslintrc
+!gulpfile.js
+!package.json
+!*/
