@@ -24,6 +24,58 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+ // This theme uses wp_nav_menu() in two locations.
+ function register_menus() {
+	 register_nav_menus(
+		 array(
+			 'main-menu' => __( 'Main Menu' ),
+			 'partner-menu' => __( 'Partner Menu' ),
+			 'social-menu' => __( 'Social Menu' ),
+			 'contact-menu' => __( 'Contact Menu' )
+		 )
+	 );
+ }
+ add_action( 'init', 'register_menus' );
+
+ wp_enqueue_style( 'header', get_template_directory_uri() . '/assets/css/header/header.css',false,'1.1','all');
+ wp_enqueue_style( 'content', get_template_directory_uri() . '/assets/css/content/content.css',false,'1.1','all');
+  wp_enqueue_style( 'footer', get_template_directory_uri() . '/assets/css/footer/footer.css',false,'1.1','all');
+
+	wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), false, '1.0', true );
+
+	function raleway_font_url() {
+	    $fonts_url = '';
+
+	    /* Translators: If there are characters in your language that are not
+	    * supported by Open Sans, translate this to 'off'. Do not translate
+	    * into your own language.
+	    */
+	    $raleway = _x( 'on', 'Raleway font: on or off', 'yourthemename' );
+
+	    if ( 'off' !== $raleway ) {
+	        $font_families = array();
+
+	        if ( 'off' !== $raleway ) {
+	            $font_families[] = 'Raleway:400,400i,600,600i';
+	        }
+
+	        $query_args = array(
+	            'family' => urlencode( implode( '|', $font_families ) ),
+	            'subset' => urlencode( 'latin,latin-ext' ),
+	        );
+
+	        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	    }
+
+	    return esc_url_raw( $fonts_url );
+	}
+
+	function raleway_scripts_styles() {
+    wp_enqueue_style( 'raleway-fonts', raleway_font_url(), array(), null );
+	}
+	add_action( 'wp_enqueue_scripts', 'raleway_scripts_styles' );
+
 function twentyseventeen_setup() {
 	/*
 	 * Make theme available for translation.
@@ -57,12 +109,6 @@ function twentyseventeen_setup() {
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;
-
-	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'twentyseventeen' ),
-		'social' => __( 'Social Links Menu', 'twentyseventeen' ),
-	) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -105,103 +151,6 @@ function twentyseventeen_setup() {
 	 * specifically font, colors, and column width.
  	 */
 	add_editor_style( array( 'assets/css/editor-style.css', twentyseventeen_fonts_url() ) );
-
-	// Define and register starter content to showcase the theme on new sites.
-	$starter_content = array(
-		'widgets' => array(
-			// Place three core-defined widgets in the sidebar area.
-			'sidebar-1' => array(
-				'text_business_info',
-				'search',
-				'text_about',
-			),
-
-			// Add the core-defined business info widget to the footer 1 area.
-			'sidebar-2' => array(
-				'text_business_info',
-			),
-
-			// Put two core-defined widgets in the footer 2 area.
-			'sidebar-3' => array(
-				'text_about',
-				'search',
-			),
-		),
-
-		// Specify the core-defined pages to create and add custom thumbnails to some of them.
-		'posts' => array(
-			'home',
-			'about' => array(
-				'thumbnail' => '{{image-sandwich}}',
-			),
-			'contact' => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-			'blog' => array(
-				'thumbnail' => '{{image-coffee}}',
-			),
-			'homepage-section' => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-		),
-
-		// Create the custom image attachments used as post thumbnails for pages.
-		'attachments' => array(
-			'image-espresso' => array(
-				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/espresso.jpg', // URL relative to the template directory.
-			),
-			'image-sandwich' => array(
-				'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/sandwich.jpg',
-			),
-			'image-coffee' => array(
-				'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/coffee.jpg',
-			),
-		),
-
-		// Default to a static front page and assign the front and posts pages.
-		'options' => array(
-			'show_on_front' => 'page',
-			'page_on_front' => '{{home}}',
-			'page_for_posts' => '{{blog}}',
-		),
-
-		// Set the front page section theme mods to the IDs of the core-registered pages.
-		'theme_mods' => array(
-			'panel_1' => '{{homepage-section}}',
-			'panel_2' => '{{about}}',
-			'panel_3' => '{{blog}}',
-			'panel_4' => '{{contact}}',
-		),
-
-		// Set up nav menus for each of the two areas registered in the theme.
-		'nav_menus' => array(
-			// Assign a menu to the "top" location.
-			'top' => array(
-				'name' => __( 'Top Menu', 'twentyseventeen' ),
-				'items' => array(
-					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
-					'page_about',
-					'page_blog',
-					'page_contact',
-				),
-			),
-
-			// Assign a menu to the "social" location.
-			'social' => array(
-				'name' => __( 'Social Links Menu', 'twentyseventeen' ),
-				'items' => array(
-					'link_yelp',
-					'link_facebook',
-					'link_twitter',
-					'link_instagram',
-					'link_email',
-				),
-			),
-		),
-	);
 
 	/**
 	 * Filters Twenty Seventeen array of starter content.
@@ -433,24 +382,9 @@ function twentyseventeen_scripts() {
 	wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
 	wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
-	wp_enqueue_script( 'twentyseventeen-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
-
 	$twentyseventeen_l10n = array(
 		'quote'          => twentyseventeen_get_svg( array( 'icon' => 'quote-right' ) ),
 	);
-
-	if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
-		$twentyseventeen_l10n['expand']         = __( 'Expand child menu', 'twentyseventeen' );
-		$twentyseventeen_l10n['collapse']       = __( 'Collapse child menu', 'twentyseventeen' );
-		$twentyseventeen_l10n['icon']           = twentyseventeen_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
-	}
-
-	wp_enqueue_script( 'twentyseventeen-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '1.0', true );
-
-	wp_enqueue_script( 'jquery-scrollto', get_theme_file_uri( '/assets/js/jquery.scrollTo.js' ), array( 'jquery' ), '2.1.2', true );
-
-	wp_localize_script( 'twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

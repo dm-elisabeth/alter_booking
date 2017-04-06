@@ -1,0 +1,33 @@
+@import "../../general/mixins";
+@import "../../general/fonts";
+@import "../../general/colors";
+
+.footer__nav {
+  flex-basis:100%;
+  margin: 0 0 20px 0;
+  @include breakpoints(m) {
+    flex-basis: 50%;
+  }
+  @include breakpoints(ml) {
+    flex-basis: 25%;
+  }
+  .footer__nav__name {
+    @extend %boldUppercase;
+  }
+  ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    li {
+      margin:0;
+      padding:0;
+      &:not(.no-click) a {
+          text-decoration: underline;
+          @extend %linksLowercase;
+        }
+      a {
+        color: $accentBGfont;
+      }
+    }
+  }
+}

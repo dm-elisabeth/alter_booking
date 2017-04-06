@@ -1,0 +1,29 @@
+@import "../general/mixins";
+/* menu styles */
+@import "modules/footerMenu";
+
+/* fixed footer styles */
+#footer {
+  position: fixed;
+  bottom:0;
+  z-index: 2;
+  background-color: $accentBG;
+  width: 100%;
+  padding: 20px;
+  .footer__content{
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    color: $accentBGfont;
+    flex-wrap: wrap;
+    @include breakpoints(m) {
+      flex-wrap: no-wrap;
+    }
+  }
+}
+/* spacing element styles */
+.footer__spacer {
+  position: relative;
+  z-index: 1;
+}

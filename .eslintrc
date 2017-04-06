@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "padded-blocks": ["off", { "classes": "always" }],
+    "one-var": ["off"],
+    "no-restricted-syntax": ["off", "BinaryExpression[operator='of']"],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-trailing-spaces": ["error", { "skipBlankLines": false }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
+  }
+}

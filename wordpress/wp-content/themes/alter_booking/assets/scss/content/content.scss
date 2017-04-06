@@ -1,0 +1,10 @@
+/* general styles for div#content */
+#content {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  z-index: 3;
+  width: 100%;
+  min-height: 100vh;
+}

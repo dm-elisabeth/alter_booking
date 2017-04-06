@@ -1,0 +1,27 @@
+@import "../../general/mixins";
+@import "../../general/fonts";
+
+.mainNav {
+  display: none;
+  @include breakpoints(m) {
+    display: block;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0 0 0 10px;
+      &.current-menu-item a {
+        color: $accentColor;
+        border-bottom: solid 2px $accentColor;
+      }
+      a {
+        @extend %linksUppercase;
+      }
+      @include breakpoints(m) {
+        display: inline-block;
+      }
+    }
+  }
+}

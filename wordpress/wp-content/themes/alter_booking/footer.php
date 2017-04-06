@@ -16,31 +16,43 @@
 
 		</div><!-- #content -->
 
-		<footer id="colophon" class="site-footer" role="contentinfo">
-			<div class="wrap">
+		<footer id="footer" role="contentinfo">
+			<div class="footer__content">
 				<?php
-				get_template_part( 'template-parts/footer/footer', 'widgets' );
+					$nav_menu = wp_get_nav_menu_object(2);
+					wp_nav_menu( array(
+					'theme_location' => 'main-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?>
 
-				if ( has_nav_menu( 'social' ) ) : ?>
-					<nav class="social-navigation" role="navigation" aria-label="<?php _e( 'Footer Social Links Menu', 'twentyseventeen' ); ?>">
-						<?php
-							wp_nav_menu( array(
-								'theme_location' => 'social',
-								'menu_class'     => 'social-links-menu',
-								'depth'          => 1,
-								'link_before'    => '<span class="screen-reader-text">',
-								'link_after'     => '</span>' . twentyseventeen_get_svg( array( 'icon' => 'chain' ) ),
-							) );
-						?>
-					</nav><!-- .social-navigation -->
-				<?php endif;
+				<?php
+					$nav_menu = wp_get_nav_menu_object(3);
+					wp_nav_menu( array(
+					'theme_location' => 'partner-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?>
 
-				get_template_part( 'template-parts/footer/site', 'info' );
-				?>
-			</div><!-- .wrap -->
-		</footer><!-- #colophon -->
-	</div><!-- .site-content-contain -->
-</div><!-- #page -->
+				<?php
+					$nav_menu = wp_get_nav_menu_object(4);
+					wp_nav_menu( array(
+					'theme_location' => 'social-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?>
+
+				<?php
+					$nav_menu = wp_get_nav_menu_object(5);
+					wp_nav_menu( array(
+					'theme_location' => 'contact-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?>
+			</div><!-- .footer__content -->
+		</footer><!-- #footer -->
+		<div class="footer__spacer"></div>
+</div><!-- #wrapper -->
 <?php wp_footer(); ?>
 
 </body>

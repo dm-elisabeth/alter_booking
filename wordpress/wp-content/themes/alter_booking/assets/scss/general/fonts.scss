@@ -1,0 +1,25 @@
+@import "colors";
+
+%boldUppercase {
+  color: $accentBGfont;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+%colorTransition {
+  transition: 0.6s ease-in-out;
+  &:hover{
+    transition: 0.2s ease-in-out;
+    color: $accentColor;
+  }
+}
+
+%linksUppercase {
+  @extend %boldUppercase;
+  @extend %colorTransition;
+}
+
+%linksLowercase {
+  @extend %colorTransition;
+}
