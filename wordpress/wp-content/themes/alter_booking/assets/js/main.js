@@ -1,4 +1,7 @@
-const header = document.querySelector('#header'),
+const header = document.querySelector('#header')footerHeight = document.querySelector('#footer').clientHeight,
+  headerHeight = header.clientHeight,
+  footerSpacer = document.querySelector('.footer__spacer'),
+  headerSpacer = document.querySelector('.header__spacer');,
   makeNavSmall = () => {
     header.classList.remove('large');
     header.classList.add('small');
@@ -6,6 +9,10 @@ const header = document.querySelector('#header'),
   makeNavBig = () => {
     header.classList.add('large');
     header.classList.remove('small');
+  },
+  reziseFooterHeader = () => {
+    footerSpacer.style.height = `${footerHeight}px`;
+    headerSpacer.style.height = `${headerHeight}px`;
   };
 
 window.onscroll = () => {
@@ -16,16 +23,8 @@ window.onscroll = () => {
   }
 };
 
-function reziseFooterHeader() {
-  const footerHeight = document.querySelector('#footer').clientHeight,
-    headerHeight = header.clientHeight,
-    footerSpacer = document.querySelector('.footer__spacer'),
-    headerSpacer = document.querySelector('.header__spacer');
-  footerSpacer.style.height = `${footerHeight}px`;
-  headerSpacer.style.height = `${headerHeight}px`;
-}
-
 window.onresize = () => {
   reziseFooterHeader();
 };
+
 reziseFooterHeader();
