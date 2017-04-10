@@ -1,23 +1,27 @@
-@import "../../general/mixins";
-@import "../../general/fonts";
-
-.mainNav {
+.header__menu {
   display: none;
   @include breakpoints(m) {
-    display: block;
+    display: inline-block;
   }
+}
+.mainNav, .langSwitch {
+  display: inline-block;
   ul {
     margin: 0;
     padding: 0;
     li {
       margin: 0;
-      padding: 0 0 0 10px;
-      &.current-menu-item a {
+      padding: 0 0 0 5px;
+      &:first-of-type {
+        padding: 0 0 0 23px;
+      }
+      &.current-menu-item a, &.current-page-ancestor a {
         color: $accentColor;
         border-bottom: solid 2px $accentColor;
       }
       a {
-        @extend %linksUppercase;
+        @extend %menuLinks;
+        outline: none;
       }
       @include breakpoints(m) {
         display: inline-block;

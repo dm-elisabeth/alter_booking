@@ -1,0 +1,22 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+}
+.product__image {
+  width:40%;
+}
+.product__details {
+  width: 55%;
+}
+.product__name {
+  @extend %boldUppercase;
+  margin: 0 0 5px 0;
+}
+.product__download {
+  &:not(:last-of-type) {
+    &::after {
+      content: ' |';
+    }
+  }
+}

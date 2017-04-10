@@ -22,7 +22,10 @@
 			<?php get_template_part( 'template-parts/header/header', 'logo' ); ?>
 
 			<!-- fixed custom top navigation -->
-			<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_class' => 'mainNav' ) ); ?>
+			<div class="header__menu">
+				<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_class' => 'mainNav' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'language-menu', 'container_class' => 'langSwitch' ) ); ?>
+			</div>
 		</div><!-- .header__content -->
 	</header><!-- #fixedHeader -->
 	<div class="header__spacer"></div>

@@ -1,10 +1,28 @@
 /* general styles for div#content */
 #content {
   position: relative;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: white;
+  padding: 0 20px;
   z-index: 3;
   width: 100%;
-  min-height: 100vh;
+  background: white;
+  background-image: url(http://www.musszo.com/img/musszo_back_pattern.png);
+  background-attachment:fixed;
+  border-bottom: 2px solid $accentColor;
+  .wrap {
+    margin: 0 auto;
+    max-width: 900px;
+    background: rgba( $accentBG, .8 );
+    #primary {
+      padding: 20px 0 0;
+    }
+  }
+}
+
+// language switch
+.english #content .german, .german #content .english {
+  display: none;
+}
+body.english .langSwitch [title="english"], body.german .langSwitch [title="german"] {
+  color: $accentColor;
+  border-bottom: solid 2px $accentColor;
 }

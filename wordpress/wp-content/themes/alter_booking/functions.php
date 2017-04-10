@@ -26,55 +26,74 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
  */
 
  // This theme uses wp_nav_menu() in two locations.
- function register_menus() {
-	 register_nav_menus(
-		 array(
-			 'main-menu' => __( 'Main Menu' ),
-			 'partner-menu' => __( 'Partner Menu' ),
-			 'social-menu' => __( 'Social Menu' ),
-			 'contact-menu' => __( 'Contact Menu' )
-		 )
-	 );
- }
- add_action( 'init', 'register_menus' );
+function register_menus() {
+ register_nav_menus(
+	 array(
+		 'main-menu' => __( 'Main Menu' ),
+		 'partner-menu' => __( 'Partner Menu' ),
+		 'social-menu' => __( 'Social Menu' ),
+		 'contact-menu' => __( 'Contact Menu' ),
+		 'language-menu' => __( 'Language Menu' ),
+		 'legal-menu' => __( 'Legal Menu' )
+	 )
+ );
+}
+add_action( 'init', 'register_menus' );
 
- wp_enqueue_style( 'header', get_template_directory_uri() . '/assets/css/header/header.css',false,'1.1','all');
- wp_enqueue_style( 'content', get_template_directory_uri() . '/assets/css/content/content.css',false,'1.1','all');
-  wp_enqueue_style( 'footer', get_template_directory_uri() . '/assets/css/footer/footer.css',false,'1.1','all');
+wp_enqueue_style( 'header', get_template_directory_uri() . '/assets/css/main.css',false,'1.1','all');
 
-	wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), false, '1.0', true );
+wp_enqueue_script( 'main', get_theme_file_uri( '/assets/js/main.js' ), false, '1.0', true );
 
-	function raleway_font_url() {
-	    $fonts_url = '';
+function raleway_font_url() {
+    $fonts_url = '';
 
-	    /* Translators: If there are characters in your language that are not
-	    * supported by Open Sans, translate this to 'off'. Do not translate
-	    * into your own language.
-	    */
-	    $raleway = _x( 'on', 'Raleway font: on or off', 'yourthemename' );
+    /* Translators: If there are characters in your language that are not
+    * supported by Open Sans, translate this to 'off'. Do not translate
+    * into your own language.
+    */
+    $raleway = _x( 'on', 'Raleway font: on or off', 'yourthemename' );
 
-	    if ( 'off' !== $raleway ) {
-	        $font_families = array();
+    if ( 'off' !== $raleway ) {
+        $font_families = array();
 
-	        if ( 'off' !== $raleway ) {
-	            $font_families[] = 'Raleway:400,400i,600,600i';
-	        }
+        if ( 'off' !== $raleway ) {
+            $font_families[] = 'Raleway:400,400i,600,600i';
+        }
 
-	        $query_args = array(
-	            'family' => urlencode( implode( '|', $font_families ) ),
-	            'subset' => urlencode( 'latin,latin-ext' ),
-	        );
+        $query_args = array(
+            'family' => urlencode( implode( '|', $font_families ) ),
+            'subset' => urlencode( 'latin,latin-ext' ),
+        );
 
-	        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	    }
+        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+    }
 
-	    return esc_url_raw( $fonts_url );
+    return esc_url_raw( $fonts_url );
+}
+
+function raleway_scripts_styles() {
+  wp_enqueue_style( 'raleway-fonts', raleway_font_url(), array(), null );
+}
+add_action( 'wp_enqueue_scripts', 'raleway_scripts_styles' );
+
+function wpb_list_child_pages() {
+	global $post;
+	if ( is_page() && $post->post_parent )
+		$childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+	else
+		$childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+	if ( $childpages ) {
+		$string = '<ul>' . $childpages . '</ul>';
 	}
-
-	function raleway_scripts_styles() {
-    wp_enqueue_style( 'raleway-fonts', raleway_font_url(), array(), null );
+	return $string;
 	}
-	add_action( 'wp_enqueue_scripts', 'raleway_scripts_styles' );
+add_shortcode('wpb_childpages', 'wpb_list_child_pages');
+
+
+
+
+
+
 
 function twentyseventeen_setup() {
 	/*
@@ -102,10 +121,6 @@ function twentyseventeen_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-
-	add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
-
-	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;

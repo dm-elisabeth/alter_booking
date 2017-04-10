@@ -1,7 +1,4 @@
-@import "colors";
-
 %boldUppercase {
-  color: $accentBGfont;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -15,11 +12,46 @@
   }
 }
 
-%linksUppercase {
-  @extend %boldUppercase;
+// LINKS
+%linksLowercase {
   @extend %colorTransition;
 }
 
-%linksLowercase {
+#main a {
+  color: $accentColor;
+  border-bottom: 2px solid white;
+  font-weight: bold;
+  &:hover {
+    transition: 0.2s ease-in-out;
+    border-bottom: 2px solid $accentColor;
+  }
+}
+
+// HEADLINES
+%headline {
+  @extend %boldUppercase;
+  font-size: 1.8em;
+  padding: 0 0 4px;
+  color: $accentColor;
+  border-bottom: 4px solid $accentColor;
+  display: block;
+  margin: 10px auto 4px;
+  text-align: center;
+  line-height: 1em;
+}
+
+%subline {
+  @extend %boldUppercase;
+  font-size: 0.7em;
+  color: $standardFont;
+  white-space: nowrap;
+  text-align: center;
+}
+
+// MENU
+
+%menuLinks {
+  color: $accentBGfont;
+  @extend %boldUppercase;
   @extend %colorTransition;
 }

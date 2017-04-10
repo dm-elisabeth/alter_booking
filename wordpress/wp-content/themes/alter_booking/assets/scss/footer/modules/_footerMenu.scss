@@ -1,15 +1,15 @@
-@import "../../general/mixins";
-@import "../../general/fonts";
-@import "../../general/colors";
-
 .footer__nav {
-  flex-basis:100%;
+  flex-basis:50%;
   margin: 0 0 20px 0;
+  white-space: nowrap;
   @include breakpoints(m) {
     flex-basis: 50%;
   }
   @include breakpoints(ml) {
-    flex-basis: 25%;
+    flex-basis: 20%;
+    &:last-of-type {
+        text-align: right;
+    }
   }
   .footer__nav__name {
     @extend %boldUppercase;

@@ -49,6 +49,13 @@
 					'container_class' => 'footer__nav',
 					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
 				) ); ?>
+
+				<?php
+					wp_nav_menu( array(
+					'theme_location' => 'legal-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?>
 			</div><!-- .footer__content -->
 		</footer><!-- #footer -->
 		<div class="footer__spacer"></div>

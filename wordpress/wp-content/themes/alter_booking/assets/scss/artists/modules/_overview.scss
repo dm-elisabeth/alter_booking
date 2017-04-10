@@ -1,0 +1,45 @@
+/* artist overview page styles */
+.artistWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // after element to prevent last item to always stick to the right, e.g. in 3 column setup
+  &:after {
+    content: "";
+    @include breakpoints(ml) {
+      flex-basis: 49%;
+    }
+    @include breakpoints(l) {
+      flex-basis: 32%;
+    }
+  }
+  &__item{
+    position: relative;
+    flex-basis: 100%;
+    margin: 0 0 20px 0;
+    @include breakpoints(ml) {
+      flex-basis: 49%;
+    }
+    @include breakpoints(l) {
+      flex-basis: 32%;
+    }
+  }
+  &__thumbnail img{
+    display: block;
+    width: 100%;
+  }
+  &__title{
+    position:absolute;
+    bottom:0;
+    padding: 10px;
+    background-color: rgba( $accentBG, .8 );
+    color: $accentBGfont;
+    @extend %boldUppercase;
+    @extend %colorTransition;
+  }
+  .artistWrap__item:hover .artistWrap__title{
+    background-color: $accentBG;
+    transition: 0.2s ease-in-out;
+    color: $accentColor;
+  }
+}

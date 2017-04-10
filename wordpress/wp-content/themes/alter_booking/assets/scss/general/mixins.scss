@@ -21,3 +21,11 @@
     }
   }
 }
+
+@mixin floatingColumns($position) {
+  float: $position;
+  width: 100%;
+  @include breakpoints(ml) {
+    width: 48%;
+  }
+}

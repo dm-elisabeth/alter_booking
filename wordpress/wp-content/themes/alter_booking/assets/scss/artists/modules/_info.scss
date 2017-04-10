@@ -1,0 +1,15 @@
+.artist {
+  &__info {
+    @include floatingColumns(left);
+  }
+  &__social {
+    @include floatingColumns(right);
+  }
+  &__bio, &__press, &__refs {
+    margin: 20px 0 0;
+    @include breakpoints(m) {
+      margin: 20px 0;
+    }
+    text-align: justify;
+  }
+}

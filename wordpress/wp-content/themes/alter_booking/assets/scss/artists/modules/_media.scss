@@ -1,0 +1,29 @@
+.artist__picture {
+  @include floatingColumns(right);
+  margin: 20px 0 0;
+  @include breakpoints(m) {
+    margin: 27px 0 20px;
+  }
+  img {
+    width: 100%;
+  }
+}
+.artist__iframe {
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin: 0 0 20px 0;
+  &.video {
+    padding-bottom: 55%;
+  }
+  &.playlist {
+    padding-bottom: 80%;
+  }
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

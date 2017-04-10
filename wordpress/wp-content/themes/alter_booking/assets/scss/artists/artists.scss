@@ -1,0 +1,15 @@
+@import "modules/overview";
+@import "modules/headline";
+@import "modules/info";
+@import "modules/media";
+@import "modules/products";
+@import "modules/quotes";
+@import "modules/references";
+
+/* artist detail page styles */
+
+// clear floatingColumns
+.artist__clearfix {
+  content: '';
+  clear: both;
+}

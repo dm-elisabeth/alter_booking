@@ -1,0 +1,17 @@
+.artist {
+  &__name {
+    @extend %headline;
+  }
+  &__meta {
+    text-align: center;
+    line-height: 1em;
+  }
+  &__genre, &__country, &__tasks {
+    @extend %subline;
+    &:not(:last-of-type) {
+      &::after {
+        content: '|';
+      }
+    }
+  }
+}
