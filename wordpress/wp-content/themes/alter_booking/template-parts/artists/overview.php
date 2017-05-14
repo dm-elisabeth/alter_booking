@@ -8,7 +8,16 @@
 
 		<div class="artistWrap__item">
 			<a class="artistWrap__link" href="<?php echo get_page_link( $page->ID ); ?>">
-			<div class="artistWrap__thumbnail"><?php echo get_the_post_thumbnail( $page->ID ); ?></div>
+			<div class="artistWrap__thumbnail">
+
+				<?php $image = get_field('image', $page->ID);
+			        $size = 'artist-ov';
+			        $picture = $image['sizes'][ $size ];
+			  if( !empty($image) ): ?>
+			    <img src="<?php echo $picture ?>" alt="<?php echo $image['alt']; ?>" />
+			  <?php endif; ?>
+
+			</div>
 			<div class="artistWrap__title"><?php echo $page->post_title; ?></div>
 			</a>
 		</div>

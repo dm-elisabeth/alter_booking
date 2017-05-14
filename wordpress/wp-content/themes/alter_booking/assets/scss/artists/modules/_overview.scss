@@ -17,7 +17,7 @@
     position: relative;
     flex-basis: 100%;
     margin: 0 0 20px 0;
-    @include breakpoints(ml) {
+    @include breakpoints(m) {
       flex-basis: 49%;
     }
     @include breakpoints(l) {
@@ -32,7 +32,10 @@
     position:absolute;
     bottom:0;
     padding: 10px;
-    background-color: rgba( $accentBG, .8 );
+    background-color: $accentBG;
+    @include breakpoints(l) {
+      background-color: rgba( $accentBG, .8 );
+    }
     color: $accentBGfont;
     @extend %boldUppercase;
     @extend %colorTransition;

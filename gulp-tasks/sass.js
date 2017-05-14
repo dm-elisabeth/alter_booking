@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var sass = {
     init : function() {
 
-        return gulp.src('wordpress/wp-content/themes/alter_booking/assets/scss/**/*.{scss,sass}')
+        return gulp.src('wordpress/wp-content/themes/alter_booking/assets/scss/*.{scss,sass}')
             .pipe($.sass({
               outputStyle: 'compressed'
             })).on('error', function (err) {

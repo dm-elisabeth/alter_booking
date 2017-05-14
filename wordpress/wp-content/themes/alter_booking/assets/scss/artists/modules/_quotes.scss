@@ -1,0 +1,29 @@
+.press {
+  margin: 10px 0;
+  text-align: right;
+  &__quote {
+    font-style: italic;
+    border-bottom: solid $accentColor 2px;
+    padding: 5px 10px;
+    text-align: left;
+    position: relative;
+    &::before {
+      content: '„';
+      /* position: absolute;
+      font-size: 5em;
+      color: $accentColor;
+      font-family: Georgia;
+      transform: translate(-90%, -62%);
+      font-style: normal; */
+    }
+    &::after {
+      content: '“';
+      /* position: absolute;
+      font-size: 5em;
+      transform: translate(-9%, -23%);
+      font-family: Georgia;
+      color: $accentColor;
+      font-style: normal; */
+    }
+  }
+}

@@ -1,22 +1,26 @@
-/* menu styles */
-@import "modules/footerMenu";
-
 /* fixed footer styles */
 #footer {
-  position: fixed;
+  position: relative;
+  @include breakpoints(m) {
+    position: fixed;
+  };
   bottom:0;
   z-index: 2;
-  background-color: $accentBG;
   width: 100%;
-  padding: 20px 20px 0 20px;
+  padding: 0 20px 0 20px;
   .footer__content{
+    background-color: $accentBG;
     display: flex;
     justify-content: space-between;
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     color: $accentBGfont;
     flex-wrap: wrap;
-    @include breakpoints(m) {
+    padding: 20px 15px 0;
+    @include breakpoints(m){
+      padding: 20px 20px 0;
+    }
+    @include breakpoints(l) {
       flex-wrap: nowrap;
     }
   }
@@ -25,4 +29,42 @@
 .footer__spacer {
   position: relative;
   z-index: 1;
+  display: none;
+  @include breakpoints(m) {
+    display: block;
+  };
+}
+/* menu styles */
+.footer__nav {
+  margin: 0 0 20px 0;
+  white-space: nowrap;
+  flex-basis: 100%;
+  @include breakpoints(m) {
+    flex-basis: 50%;
+  };
+  @include breakpoints(l) {
+    flex-basis: 25%;
+    &:last-of-type {
+        text-align: right;
+    }
+  }
+  .footer__nav__name {
+    @extend %boldUppercase;
+  }
+  ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    li {
+      margin:0;
+      padding:0;
+      &:not(.no-click) a {
+          text-decoration: underline;
+          @extend %linksLowercase;
+        }
+      a {
+        color: $accentBGfont;
+      }
+    }
+  }
 }

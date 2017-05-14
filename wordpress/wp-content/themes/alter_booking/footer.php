@@ -26,18 +26,18 @@
 					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
 				) ); ?>
 
+				<!-- <?php
+					$nav_menu = wp_get_nav_menu_object(10);
+					wp_nav_menu( array(
+					'theme_location' => 'artists-menu',
+					'container_class' => 'footer__nav',
+					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
+				) ); ?> -->
+
 				<?php
 					$nav_menu = wp_get_nav_menu_object(3);
 					wp_nav_menu( array(
 					'theme_location' => 'partner-menu',
-					'container_class' => 'footer__nav',
-					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
-				) ); ?>
-
-				<?php
-					$nav_menu = wp_get_nav_menu_object(4);
-					wp_nav_menu( array(
-					'theme_location' => 'social-menu',
 					'container_class' => 'footer__nav',
 					'items_wrap' => '<div class="footer__nav__name">'.esc_html($nav_menu->name).'</div><ul id="%1$s" class="%2$s">%3$s</ul>'
 				) ); ?>

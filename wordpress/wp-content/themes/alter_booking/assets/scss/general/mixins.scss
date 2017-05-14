@@ -1,17 +1,17 @@
 @mixin breakpoints($breakpoint) {
 
   @if $breakpoint == "s" {
-    @media screen and (min-width: 320px){
+    @media screen and (min-width: 321px){
       @content;
     }
   }
   @if $breakpoint == "m" {
-    @media screen and (min-width: 600px){
+    @media screen and (min-width: 560px){
       @content;
     }
   }
   @if $breakpoint == "ml" {
-    @media screen and (min-width: 740px){
+    @media screen and (min-width: 820px){
       @content;
     }
   }

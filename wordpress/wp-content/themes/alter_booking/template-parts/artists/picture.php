@@ -1,5 +1,6 @@
-<div class="artist__picture">
-  <?php $image = get_field('image'); if( !empty($image) ): ?>
-    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-  <?php endif; ?>
-</div>
+<?php $image = get_field('image');
+      $size = 'artist-detail';
+      $picture = $image['sizes'][ $size ];
+if( !empty($image) ): ?>
+  <img src="<?php echo $picture ?>" alt="<?php echo $image['alt']; ?>" />
+<?php endif; ?>

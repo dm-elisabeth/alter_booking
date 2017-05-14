@@ -1,15 +1,15 @@
 .artist {
   &__info {
-    @include floatingColumns(left);
+    width: 100%;
+    @include breakpoints(ml) {
+      flex-basis: 53%;
+    }
   }
   &__social {
-    @include floatingColumns(right);
-  }
-  &__bio, &__press, &__refs {
-    margin: 20px 0 0;
-    @include breakpoints(m) {
-      margin: 20px 0;
+    width: 100%;
+    @include breakpoints(ml) {
+      flex-basis: 47%;
+      padding-left: 50px;
     }
-    text-align: justify;
   }
 }

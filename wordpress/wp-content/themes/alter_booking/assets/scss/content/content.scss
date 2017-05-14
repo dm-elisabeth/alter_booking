@@ -1,19 +1,76 @@
 /* general styles for div#content */
-#content {
-  position: relative;
-  padding: 0 20px;
-  z-index: 3;
-  width: 100%;
+body {
   background: white;
   background-image: url(http://www.musszo.com/img/musszo_back_pattern.png);
   background-attachment:fixed;
-  border-bottom: 2px solid $accentColor;
+}
+#content {
+  position: relative;
+  padding: 0;
+  min-height: calc(100vh - 260px);
+  padding: 0 15px;
+  z-index: 3;
+  width: 100%;
   .wrap {
     margin: 0 auto;
-    max-width: 900px;
-    background: rgba( $accentBG, .8 );
+    max-width: 960px;
+    background: $accentBG;
+    padding: 10px 15px;
+    border-bottom: 2px solid $accentColor;
+    @include breakpoints(m){
+      padding: 0 20px;
+    }
     #primary {
       padding: 20px 0 0;
+    }
+    .artist, .about, .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      &__section {
+        &--left {
+          width: 100%;
+          @include breakpoints(ml) {
+            flex-basis: 53%;
+          }
+        }
+        &--right {
+          width: 100%;
+          @include breakpoints(ml) {
+            flex-basis: 47%;
+            padding-left: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.order {
+  &__mobile1 {
+    order: 1;
+  }
+  &__mobile2 {
+    order: 2;
+  }
+  &__mobile3 {
+    order: 3;
+  }
+  &__mobile4 {
+    order: 4;
+  }
+  @include breakpoints(ml) {
+    &__desktop1 {
+      order: 1;
+    }
+    &__desktop2 {
+      order: 2;
+    }
+    &__desktop3 {
+      order: 3;
+    }
+    &__desktop4 {
+      order: 4;
     }
   }
 }

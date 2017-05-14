@@ -1,7 +1,8 @@
 /* logo styles */
-@import "modules/logo";
+@import "modules/musszo-logo";
 /* menu styles */
 @import "modules/menu";
+@import "modules/mobileMenu";
 
 /* fixed header styles */
 #header {
@@ -9,18 +10,25 @@
   top:0;
   z-index: 999;
   width: 100%;
-  transition: 0.4s ease-in-out;
-  padding: 5px 20px;
-  background-color: $accentBG;
-  &.small {
-    border-bottom: 2px solid $accentColor;
-  }
   .header__content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    max-width: 900px;
+    max-width: 960px;
     margin:0 auto;
+    padding: 0 15px;
+    @include breakpoints(m){
+      padding: 0 20px;
+      flex-wrap: nowrap;
+    }
+    transition: 0.4s ease-in-out;
+    background-color: $accentBG;
+    border-bottom: 2px solid $accentBG;
+    &.small {
+      border-bottom: 2px solid $accentColor;
+      padding: 0 20px;
+    }
   }
 }
 .header__spacer {

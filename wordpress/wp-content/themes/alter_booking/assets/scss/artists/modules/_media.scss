@@ -1,13 +1,3 @@
-.artist__picture {
-  @include floatingColumns(right);
-  margin: 20px 0 0;
-  @include breakpoints(m) {
-    margin: 27px 0 20px;
-  }
-  img {
-    width: 100%;
-  }
-}
 .artist__iframe {
   position: relative;
   width: 100%;

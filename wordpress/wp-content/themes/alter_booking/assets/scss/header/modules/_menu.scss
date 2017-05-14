@@ -1,7 +1,18 @@
 .header__menu {
-  display: none;
+  background: $accentBG;
+  top: 80px;
+  padding: 15px 0 5px;
+  left:0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   @include breakpoints(m) {
-    display: inline-block;
+    width: auto;
+  }
+}
+.small {
+  .header__menu {
+    padding: 0 0 5px;
   }
 }
 .mainNav, .langSwitch {
@@ -9,11 +20,14 @@
   ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
     li {
       margin: 0;
       padding: 0 0 0 5px;
-      &:first-of-type {
-        padding: 0 0 0 23px;
+      @include breakpoints(m) {
+        &:first-of-type {
+          padding: 0 0 0 23px;
+        }
       }
       &.current-menu-item a, &.current-page-ancestor a {
         color: $accentColor;
@@ -23,9 +37,7 @@
         @extend %menuLinks;
         outline: none;
       }
-      @include breakpoints(m) {
-        display: inline-block;
-      }
+      display: inline-block;
     }
   }
 }

@@ -1,5 +1,6 @@
 <div class="artist__media">
   <?php if( have_rows('media') ):
+    echo "<h3>Media</h3>";
     while( have_rows('media') ): the_row();
       $media_item = get_sub_field('media_item');
       $media_type = get_sub_field('media_type');

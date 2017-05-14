@@ -1,6 +1,6 @@
 %boldUppercase {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 500;
   letter-spacing: 0.1em;
 }
 
@@ -20,7 +20,7 @@
 #main a {
   color: $accentColor;
   border-bottom: 2px solid white;
-  font-weight: bold;
+  font-weight: 500;
   &:hover {
     transition: 0.2s ease-in-out;
     border-bottom: 2px solid $accentColor;
@@ -30,10 +30,10 @@
 // HEADLINES
 %headline {
   @extend %boldUppercase;
-  font-size: 1.8em;
+  font-size: 2em;
   padding: 0 0 4px;
   color: $accentColor;
-  border-bottom: 4px solid $accentColor;
+  border-bottom: 3px solid $accentColor;
   display: block;
   margin: 10px auto 4px;
   text-align: center;
@@ -42,16 +42,135 @@
 
 %subline {
   @extend %boldUppercase;
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: $standardFont;
   white-space: nowrap;
   text-align: center;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	line-height: 1.4;
+	margin: 1em 0 0.5em;
+	padding: 1.5em 0 0;
+}
+h3 {
+  margin: 2em 0 0.5em;
+  @extend %boldUppercase;
+}
+
 // MENU
 
 %menuLinks {
+  font-size: 1.2em;
   color: $accentBGfont;
   @extend %boldUppercase;
   @extend %colorTransition;
+}
+
+// MUSSZO ICONS
+@font-face {
+  font-family: 'musszo_icons';
+  src: url('../fonts/musszo_icons.eot');
+  src: url('../fonts/musszo_icons.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/musszo_icons.woff') format('woff'),
+  url('../fonts/musszo_icons.ttf') format('truetype'),
+  url('../fonts/musszo_icons.svg#[set]Foundicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class*="musszo-icons"] {
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
+[class*="musszo-icons"]:before {
+  font-family: "musszo_icons";
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  position: relative;
+}
+
+.musszo-icons__{
+  &phone:before {
+    content: "\e60b";
+  }
+  &envelop:before {
+    content: "\e60c";
+  }
+  &location:before {
+    content: "\e60d";
+  }
+  &pencil:before {
+    content: "\e60e";
+  }
+  &mobile:before {
+    content: "\e60f";
+  }
+  &file-music:before {
+    content: "\e600";
+  }
+  &dropbox:before {
+    content: "\e601";
+  }
+  &file-pdf:before {
+    content: "\e602";
+  }
+  &music:before {
+    content: "\e603";
+  }
+  &play:before {
+    content: "\e604";
+  }
+  &file-empty:before {
+    content: "\e605";
+  }
+  &files-empty:before {
+    content: "\e606";
+  }
+  &file-text2:before {
+    content: "\e607";
+  }
+  &file-picture:before {
+    content: "\e608";
+  }
+  &earth:before {
+    content: "\e609";
+  }
+  &arrow-down2:before {
+    content: "\e60a";
+  }
+  &heart:before {
+    content: "\e9da";
+  }
+  &facebook:before {
+    content: "\ea8d";
+  }
+  &instagram:before {
+    content: "\ea90";
+  }
+  &twitter:before {
+    content: "\ea91";
+  }
+  &youtube:before {
+    content: "\ea99";
+  }
+  &vimeo:before {
+    content: "\ea9c";
+  }
+  &soundcloud:before {
+    content: "\eac4";
+  }
 }

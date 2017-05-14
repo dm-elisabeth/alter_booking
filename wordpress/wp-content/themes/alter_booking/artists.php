@@ -15,9 +15,18 @@ get_header(); ?>
 		</div><!-- .artist__header -->
 
 		<main id="main" class="artist" role="main">
-		  <?php get_template_part( 'template-parts/artists/picture', 'none' ); ?>
+			<div class="artist__picture artist__section artist__section--left order__mobile1">
+				<?php get_template_part( 'template-parts/artists/picture', 'none' ); ?>
+			</div>
 
-		  <div class="artist__info">
+			<div class="artist__social artist__section artist__section--right order__mobile2 order__desktop2">
+				<?php get_template_part( 'template-parts/artists/social', 'none' ); ?>
+
+				<?php get_template_part( 'template-parts/artists/downloads', 'none' ); ?>
+
+		  </div><!-- .artist__social -->
+
+		  <div class="artist__info artist__section artist__section--left order__mobile3 order__desktop3">
 		    <?php get_template_part( 'template-parts/artists/bio', 'none' ); ?>
 
 		    <?php get_template_part( 'template-parts/artists/press', 'none' ); ?>
@@ -30,12 +39,11 @@ get_header(); ?>
 
 		  </div><!-- .artist__info -->
 
-		  <div class="artist__social">
+			<div class="artist__social artist__section artist__section--right order__mobile4">
 				<?php get_template_part( 'template-parts/artists/media', 'none' ); ?>
 
-				<?php get_template_part( 'template-parts/artists/social', 'none' ); ?>
+				<?php get_template_part( 'template-parts/artists/contact', 'none' ); ?>
 
-				<?php get_template_part( 'template-parts/artists/downloads', 'none' ); ?>
 		  </div><!-- .artist__social -->
 		  <div class="artist__clearfix"></div>
 		</main><!-- #main -->

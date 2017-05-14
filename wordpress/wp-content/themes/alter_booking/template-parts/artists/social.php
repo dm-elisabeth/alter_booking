@@ -3,39 +3,60 @@
     $homepage = get_field('homepage');
     $facebook = get_field('facebook');
     $twitter = get_field('twitter');
-    $bandcamp = get_field('bandcamp');
+    $vimeo = get_field('vimeo');
     $soundcloud = get_field('soundcloud');
     $youtube = get_field('youtube');
     ?>
-<div id="artist__links">
+<div class="artist__links">
+  <?php if($homepage OR $facebook OR $twitter OR $vimeo OR $soundcloud OR $youtube) {
+    echo "<h3>Links</h3>";
+  } ?>
   <?php if( $homepage ): ?>
-    <a target="_blank" href="<?php echo $homepage; ?>">
+    <!--
+    homepage
+      -->
+    <a target="_blank" href="<?php echo $homepage; ?>" class="artist__link musszo-icons__earth">
       homepage
     </a>
   <?php endif; ?>
   <?php if( $facebook ): ?>
-    <a target="_blank" href="<?php echo $facebook; ?>">
+    <!--
+    facebook
+      -->
+    <a target="_blank" href="<?php echo $facebook; ?>" class="artist__link musszo-icons__facebook">
       facebook
     </a>
   <?php endif; ?>
   <?php if( $twitter ): ?>
-    <a target="_blank" href="<?php echo $twitter; ?>">
+    <!--
+    twitter
+      -->
+    <a target="_blank" href="<?php echo $twitter; ?>" class="artist__link musszo-icons__twitter">
       twitter
     </a>
   <?php endif; ?>
-  <?php if( $bandcamp ): ?>
-    <a target="_blank" href="<?php echo $bandcamp; ?>">
-      bandcamp
-    </a>
-  <?php endif; ?>
   <?php if( $soundcloud ): ?>
-    <a target="_blank" href="<?php echo $soundcloud; ?>">
+    <!--
+    soundcloud
+      -->
+    <a target="_blank" href="<?php echo $soundcloud; ?>" class="artist__link musszo-icons__soundcloud">
       soundcloud
     </a>
   <?php endif; ?>
   <?php if( $youtube ): ?>
-    <a target="_blank" href="<?php echo $youtube; ?>">
+    <!--
+    youtube
+      -->
+    <a target="_blank" href="<?php echo $youtube; ?>" class="artist__link musszo-icons__youtube">
       youtube
+    </a>
+  <?php endif; ?>
+  <?php if( $vimeo ): ?>
+    <!--
+    vimeo
+      -->
+    <a target="_blank" href="<?php echo $vimeo; ?>" class="artist__link musszo-icons__vimeo">
+      vimeo
     </a>
   <?php endif; ?>
 </div>

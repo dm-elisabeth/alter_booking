@@ -2,12 +2,21 @@
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px 0;
+  flex-wrap: wrap;
 }
 .product__image {
-  width:40%;
+  flex-basis:100%;
+  @include breakpoints(m) {
+    flex-basis:40%;
+  }
 }
 .product__details {
-  width: 55%;
+  flex-basis: 100%;
+  margin: 10px 0 20px;
+  @include breakpoints(m) {
+    flex-basis:55%;
+    margin: 0;
+  }
 }
 .product__name {
   @extend %boldUppercase;
